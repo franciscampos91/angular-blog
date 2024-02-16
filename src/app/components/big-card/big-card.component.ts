@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { dataFake } from "../../data/dataFake";
+
 
 @Component({
   selector: 'app-big-card',
@@ -18,6 +20,18 @@ export class BigCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.setValueToBigCard()
+  }
+
+  setValueToBigCard(){
+    const nArticles = dataFake.length
+    const lastId    = nArticles
+
+    const result         = dataFake.filter(article => article.id == lastId.toString())[0]
+    this.photoCover      = result.photoCover
+    this.cardTitle       = result.title
+    this.cardDescription = result.title   
+    this.Id              = result.id
   }
 
 }
